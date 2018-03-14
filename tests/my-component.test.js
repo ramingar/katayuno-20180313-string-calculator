@@ -3,8 +3,7 @@ import test from 'tape';
 //COMPONENT
 const Calculator = function () {
 
-    const sum = function (args) {
-        const {textNumbers} = args;
+    const sum = function ({textNumbers}) {
         const numbers = textNumbers.split(',');
         let total = 0;
 
