@@ -1,10 +1,10 @@
 import test from 'tape';
 
-//COMPONENT
+//COMPONENT ---------------------------------------------------------------------
 const Calculator = function () {
 
-    const sum = function ({textNumbers}) {
-        const numbers = textNumbers.split(',');
+    const sum = function ({addends}) {
+        const numbers = addends.split(',');
         let total = 0;
 
         numbers.forEach((val) => {
@@ -14,16 +14,16 @@ const Calculator = function () {
         return parseInt(total);
     };
 
-    return {sum};
+    return Object.freeze({sum});
 };
 
-// TESTS
+// TESTS ------------------------------------------------------------------------
 test('-------- Component: Testing calculator for 1 input', (assert) => {
     const message = 'Returning the same input';
     const expected = 1;
 
     const cal = Calculator();
-    const actual = cal.sum({textNumbers: '1'});
+    const actual = cal.sum({addends: '1'});
 
     assert.equal(actual, expected, message);
 
@@ -35,7 +35,7 @@ test(`-------- Component: Testing calculator for 1 input (handling '')`, (assert
     const expected = 0;
 
     const cal = Calculator();
-    const actual = cal.sum({textNumbers: ''});
+    const actual = cal.sum({addends: ''});
 
     assert.equal(actual, expected, message);
 
