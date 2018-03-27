@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
             scripts: {
-                files: ['web/assets/src/js/*.js'],
+                files: ['public/assets/src/js/*.js'],
                 tasks: ['copy', 'shell:rollupDev']
             }
         },
@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 command: 'export BABEL_ENV=dev && ./node_modules/.bin/rollup -c rollup-dev.config.js'
             },
             removeBuild: {
-                command: 'rm -rf web/assets/build'
+                command: 'rm -rf public/assets/build'
             },
             tests: {
                 command: 'export BABEL_ENV=test && ./node_modules/.bin/babel-tape-runner tests/*.test.js | ./node_modules/.bin/tap-spec'
@@ -27,16 +27,16 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'node_modules/material-design-icons/iconfont/',
                         src: ['**'],
-                        dest: 'web/assets/build/fonts/material-design-icons/'
+                        dest: 'public/assets/build/fonts/material-design-icons/'
                     },
                     {
                         expand: true,
                         flatten: true,
                         src: [
                             'node_modules/materialize-css/dist/css/materialize.min.css',
-                            'web/assets/src/css/site.css'
+                            'public/assets/src/css/site.css'
                         ],
-                        dest: 'web/assets/build/css/',
+                        dest: 'public/assets/build/css/',
                         filter: 'isFile'
                     },
                     {
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                             'node_modules/jquery/dist/jquery.min.js',
                             'node_modules/materialize-css/dist/js/materialize.min.js'
                         ],
-                        dest: 'web/assets/build/js/',
+                        dest: 'public/assets/build/js/',
                         filter: 'isFile'
                     }
                 ]

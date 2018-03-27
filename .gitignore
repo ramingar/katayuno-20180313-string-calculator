@@ -1,4 +1,5 @@
+.idea/*
 node_modules
 bower_components
-web/assets/build
+public/assets/build
 .nyc_output
